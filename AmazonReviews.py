@@ -1,3 +1,5 @@
+!pip install scrapy
+
 import scrapy
 
 
