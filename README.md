@@ -1,1 +1,0 @@
-# Minera-o
