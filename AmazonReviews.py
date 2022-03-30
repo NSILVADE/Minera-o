@@ -1,6 +1,5 @@
-pip install scrapy
-
 import scrapy
+from scrapy.crawler import CrawlerProcess
 
 
 class AmazonreviewsSpider(scrapy.Spider):
