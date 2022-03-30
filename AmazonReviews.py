@@ -1,4 +1,4 @@
-pip install Scrapy
+pip install scrapy
 
 import scrapy
 
