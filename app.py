@@ -107,13 +107,13 @@ Positive_Year = Sentiment_Year[Sentiment_Year.sent_rating == 'positivo']
 Negative_Year = Sentiment_Year[Sentiment_Year.sent_rating == 'negativo']
 
 st.header('Avaliações positivas ao longo dos anos com base em sentimentos')
-ax =Positive_Year.plot(x="Ano",y="Count",kind="bar",title="")
+Positive_Year.plot(x="Ano",y="Count",kind="bar",title="")
 plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.header('Avaliações negativas ao longo dos anos com base em sentimentos')
-ax = Negative_Year.plot(x="Ano",y="Count",kind="bar",title="")
+Negative_Year.plot(x="Ano",y="Count",kind="bar",title="")
 plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
