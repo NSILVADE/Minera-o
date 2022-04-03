@@ -109,7 +109,6 @@ st.header('Avaliações positivas ao longo dos anos com base em sentimentos')
 Positive_Year.plot(x="Ano",y="Count",kind="bar",title="")
 plt.show()
 st.pyplot()
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.header('Avaliações negativas ao longo dos anos com base em sentimentos')
 Negative_Year.plot(x="Ano",y="Count",kind="bar",title="")
@@ -279,7 +278,7 @@ words = tfv.get_feature_names()
 
 
 #Configuração kmeans clustering
-kmeans = KMeans(n_clusters = 21, n_init = 1, n_jobs = -1, tol=0.01, verbose=False, max_iter=1000)
+kmeans = KMeans(n_clusters = 21, n_init = 1, max_iter=1000)
 
 
 #Ajuste dos dados
