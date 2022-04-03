@@ -22,8 +22,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.cluster import KMeans
 from nltk.stem.wordnet import WordNetLemmatizer
 nltk.download('stopwords')
+nltk.download('wordnet')
 
-#Title and Subheader
+#Title e Subheader
 st.title("Analise de Avaliaçãoes")
 st.write("Echo Dot - 4 Geração - Amazon")
 
