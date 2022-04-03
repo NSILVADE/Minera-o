@@ -16,14 +16,12 @@ from plotly.subplots import make_subplots
 from plotly import tools
 from plotly.offline import plot, iplot
 from textblob import TextBlob
-import nltk
 import re
 from sklearn import preprocessing, decomposition, model_selection, metrics, pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.cluster import KMeans
-import nltk
 from nltk.stem.wordnet import WordNetLemmatizer
-
+nltk.download('stopwords')
 
 #Title and Subheader
 st.title("Analise de Avaliaçãoes")
