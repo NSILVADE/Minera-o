@@ -26,20 +26,11 @@ nltk.download('wordnet')
 from statsmodels.tsa.stattools import adfuller
 
 st.title("Analise de Avaliaçãoes")
+
+image = Image.open('echodot.jpg')
+st.image(image, caption='', width=350)
+
 st.write("Echo Dot - 4 Geração - Amazon")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.title("")
-
-with col2:
-    image = Image.open('echodot.jpg')
-    st.image(image, caption='', width=350)
-
-with col3:
-    st.write("")
-
 
 dataset = pd.read_csv('NoStem_TotalStopwordRemoval_dataset.csv')
 dataset = dataset.dropna()
