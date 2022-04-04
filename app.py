@@ -151,14 +151,14 @@ st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #Dia
-dia = dataset.groupby('Dia')['processed_text_NoStopwords'].count().reset_index()
-dia['Dia']=dia['Dia'].astype('int64')
-dia.sort_values(by=['Dia'])
+#dia = dataset.groupby('Dia')['processed_text_NoStopwords'].count().reset_index()
+#dia['Dia']=dia['Dia'].astype('int64')
+#dia.sort_values(by=['Dia'])
 
-st.header('Dia vs Contagem de avaliações')
-figu, ax = plt.subplots(figsize=(11, 9))
-ax = sns.barplot(x = "Dia", y = "processed_text_NoStopwords", data = dia);
-st.pyplot(figu)
+#st.header('Dia vs Contagem de avaliações')
+#figu, ax = plt.subplots(figsize=(11, 9))
+#ax = sns.barplot(x = "Dia", y = "processed_text_NoStopwords", data = dia);
+#st.pyplot(figu)
 
 ##################################################################################################################################
 #Unigrama - Bigrama - Trigrama
