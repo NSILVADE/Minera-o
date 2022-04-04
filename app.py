@@ -31,6 +31,8 @@ st.write("Echo Dot - 4 Geração - Amazon")
 
 # reading a csv and displaying the first six rows on the screen.
 dataset = pd.read_csv('NoStem_TotalStopwordRemoval_dataset.csv')
+dataset = dataset.dropna()
+dataset = dataset.reset_index(drop=True)
 st.write(dataset.head(10))
 
     
