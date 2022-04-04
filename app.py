@@ -45,7 +45,7 @@ plt.ylabel("Quantidade de Avaliação")
 plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
-st.write("Quantidades de classificação do sentimento de acordo com a avalição do produto")
+st.write("No gráfico acima temos as quantidades de classificação do sentimento de acordo com a avalição do produto")
 
 
 ##################################################################################################################################
@@ -83,6 +83,9 @@ st.header('Word Cloud das Avaliações Positivas')
 plot_Cloud(pos_wordcloud)
 st.header('Word Cloud das Avaliações Negativas')
 plot_Cloud(neg_wordcloud)
+st.write("Nas WordCloud's observamos que algumas palavras se repetem em ambos sentimentos de avalição, como Reconhecimento de Voz, Qualidade de Som e o nome do produto: EchoDot")
+st.write("Todavia, nas avaliações negativas, vemos com maior frequência a frase 4 e 3 geração, podendo está relacionado a comparações feitas pelos clientes sobre melhorias da 4 geração do produto avaliado")
+st.write("Já, nas avaliações positivas, temos com maior destaque as qualidades observadas pelos clientes sobre o produto")
 
 ##################################################################################################################################
 #Plot por Sentimento do Comentário, mediante Estrelas(Negativo/Positivo)
