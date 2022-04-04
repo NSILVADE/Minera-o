@@ -320,16 +320,16 @@ fig, ax = plt.subplots(figsize = (14, 4))
 ax = sns.countplot(x='cluster', data=dataset).set_title("Contagens de classificação")
 st.pyplot(fig)
 
-#cria dataframe de reviews acima da média
+#cria dataframe de reviews positivos
 above_avg = dataset.loc[dataset['above_avg'] == 1]
-#cria dataframe de reviews não acima da média
+#cria dataframe de reviews negativos
 not_above = dataset.loc[dataset['above_avg'] == 0]
 
 fig, ax = plt.subplots(figsize = (14, 4))
-ax = sns.countplot(x='cluster', data=not_above).set_title("Distribuição de cluster de classificação abaixo da média")
+ax = sns.countplot(x='cluster', data=not_above).set_title("Distribuição de cluster de classificação Negativa")
 st.pyplot(fig)
 
-ax = sns.countplot(x='cluster', data=above_avg).set_title("Distribuição de cluster de classificação acima da média")
+ax = sns.countplot(x='cluster', data=above_avg).set_title("Distribuição de cluster de classificação Positiva")
 st.pyplot(fig)
 
 
