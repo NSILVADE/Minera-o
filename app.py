@@ -249,9 +249,9 @@ stop_words = set(stopwords.words("portuguese"))
 
 #constroi uma nova lista para armazenar o texto limpo
 clean_desc = []
-for w in range(len(dataset.above_avg)):
-    dataset.above_avg = dataset.above_avg.astype(str)
-    desc = dataset['above_avg'][w].lower()
+for w in range(len(dataset.processed_text_NoStopwords)):
+    dataset.processed_text_NoStopwords = dataset.processed_text_NoStopwords.astype(str)
+    desc = dataset['processed_text_NoStopwords'][w].lower()
     
     #remove pontuação
     desc = re.sub('[^a-zA-Z]', ' ', desc)
