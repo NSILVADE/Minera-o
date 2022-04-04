@@ -251,6 +251,7 @@ st.write("As verificações mediante a separação por Bigrams(duas palavras), o
 
 ##################################################################################################################################
 st.header("Clusterização das Avaliações")
+st.title("Cluster das Avaliações Postivas")
 
 #Cluster de reviews postivas
 positive_reviews_df = dataset[dataset['sent_rating']=='positivo']
@@ -309,6 +310,7 @@ ax = sns.countplot(x='cluster', data=positive_reviews_df).set_title("Contagens d
 st.pyplot(fig)
 
 ###############################################################################################################################
+st.title("Cluster das Avaliações Negativas")
 #Cluster de reviews negativas
 negative_reviews_df = dataset[dataset['sent_rating']=='negativo']
 negative_reviews_df = negative_reviews_df.reset_index(drop=True)
