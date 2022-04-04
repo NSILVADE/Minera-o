@@ -242,8 +242,7 @@ fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', t
 #adiciona coluna 
 dataset['above_avg'] = [1 if rating == 'positivo' else 0 for rating in dataset['sent_rating']]
 
-review_pos = dataset['processed_text_NoStopwords','sent_rating'] == 'positivo'
-review_neg = dataset['processed_text_NoStopwords','sent_rating'] == 'negativo'
+dataset['review_pos'] = dataset['processed_text_NoStopwords','sent_rating'] == 'positivo'
 
 #processed_text_NoStopwords
 
