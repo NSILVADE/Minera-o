@@ -33,19 +33,17 @@ st.write("Echo Dot - 4 Geração - Amazon")
 dataset = pd.read_csv('NoStem_TotalStopwordRemoval_dataset.csv')
 dataset = dataset.dropna()
 dataset = dataset.reset_index(drop=True)
-st.write(dataset.head(10))
-
     
 st.write('Plot dos Dados')
 
 st.header('Tipo de Avaliação')
+
 summarised_results = dataset["sent_rating"].value_counts()
 qtd_star = ('Positiva', 'Negativa')
-plt.bar(qtd_star, summarised_results.values)
-plt.ylabel("Quantidade de Avaliação")
-plt.show()
-st.pyplot()
-st.set_option('deprecation.showPyplotGlobalUse', False)
+valores = summarised_results.values
+fig, ax = plt.subplots(figsize=(5, 5))
+ax = sns.histplot(x= qtd_star, y = valores , stat="probability")
+st.pyplot(fig)
 
 ##################################################################################################################################
 
