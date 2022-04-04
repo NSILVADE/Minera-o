@@ -243,8 +243,8 @@ fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', t
 dataset['above_avg'] = [1 if rating == 'positivo' else 0 for rating in dataset['sent_rating']]
 
 #Filtrando as avaliações
-dataset['review_pos'] = dataset[dataset['sent_rating'] == 'positivo'].dropna()
-dataset['review_neg'] = dataset[dataset['sent_rating'] == 'negativo'].dropna()
+dataset['review_pos'] = dataset[dataset['sent_rating'] == 'positivo']
+dataset['review_neg'] = dataset[dataset['sent_rating'] == 'negativo']
 
 #Criando a lista das stopwords
 stop_words = set(stopwords.words("portuguese"))
