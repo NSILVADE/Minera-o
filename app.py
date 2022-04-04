@@ -140,7 +140,7 @@ plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.write("Os gráficos das avalições por sentimento por Ano e Mês, possuem um ciclo de ocorrência similares, onde podemos observar uma maior dissemelhança nas quantidades de avaliações positivas, possuindo maior valor")
+st.write("Os gráficos das avaliações por sentimento por Ano e Mês, possuem um ciclo de ocorrência similares, onde podemos observar uma maior dissemelhança nas quantidades de avaliações positivas, possuindo maior valor")
 
 Meses = dataset.groupby(['Mês'])['Count'].count().reset_index()
 Meses['Mês'] = Meses['Mês'].apply(lambda x: calendar.month_name[x])
@@ -151,6 +151,7 @@ plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+st.write("Os meses com maiores volumes de avaliações são os meses de Julho e Dezembro, tendo Dezembro o pico de maior, onde deve-se levar em consideração que neste período do ano as vendas aumentam, podendo ser um fator predominante para a quantidade de avaliações ")
 
 
 #Dia
