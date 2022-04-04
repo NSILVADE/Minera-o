@@ -82,14 +82,12 @@ plot_Cloud(neg_wordcloud)
 ##################################################################################################################################
 #Plot por Sentimento do Comentário, mediante Estrelas(Negativo/Positivo)
 
-dataset['processed_text_NoStopwords'] = dataset['processed_text_NoStopwords'].astype(str)
+#dataset['processed_text_NoStopwords'] = dataset['processed_text_NoStopwords'].astype(str)
 
-dataset['Tamanho_Texto'] = dataset['processed_text_NoStopwords'].apply(len)
-
-st.header('Sentimento do Comentário')
-fig, ax = plt.subplots(figsize=(11, 9))
-ax = sns.swarmplot(x = 'sent_rating', y = 'Tamanho_Texto', data = dataset, alpha = 0.7, palette = 'coolwarm');
-st.pyplot(fig)
+#dataset['Tamanho_Texto'] = dataset['processed_text_NoStopwords'].apply(len)
+#st.header('Sentimento do Comentário')
+#ax = sns.swarmplot(x = 'sent_rating', y = 'Tamanho_Texto', data = dataset, alpha = 0.7, palette = 'coolwarm');
+#st.pyplot(fig)
 
 ##################################################################################################################################
 #Verificação do sentimento por Ano, Mês e Dia
@@ -239,37 +237,22 @@ fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', t
 
 
 ##################################################################################################################################
-#adiciona coluna 
-dataset['above_avg'] = [1 if rating == 'positivo' else 0 for rating in dataset['sent_rating']]
+#Cluster de reviews postivas
+positive_reviews_df = dataset[dataset['sent_rating']=='positivo']
+positive_reviews_df = positive_reviews_df.reset_index(drop=True)
 
-#Criando a lista das stopwords
-stop_words = set(stopwords.words("portuguese"))
 
-#constroi uma nova lista para armazenar o texto limpo
+#constroi uma nova lista para armazenar o texto
 clean_desc = []
-for w in range(len(dataset.processed_text_NoStopwords)):
-    dataset.review_pos = dataset.processed_text_NoStopwords.astype(str)
-    desc = dataset['processed_text_NoStopwords'][w].lower()
-    
-    #remove pontuação
-    desc = re.sub('[^a-zA-Z]', ' ', desc)
-    
-    #remove tags
-    desc = re.sub("&lt;/?.*?&gt;"," &lt;&gt; ",desc)
-    
-    #remove caracteres especiais e digitos
-    desc = re.sub("(\\d|\\W)+"," ",desc)
-    
+for w in range(len(positive_reviews_df.processed_text_NoStopwords)):
+    desc = positive_reviews_df['processed_text_NoStopwords'][w].lower()
     split_text = desc.split()
-    
-    #Lematização
-    lem = WordNetLemmatizer()
-    split_text = [lem.lemmatize(word) for word in split_text if not word in stop_words and len(word) >2] 
+
     split_text = " ".join(split_text)
     clean_desc.append(split_text)
 
 #TF-IDF vectorizer
-tfv = TfidfVectorizer(stop_words = stop_words, ngram_range = (1,1))
+tfv = TfidfVectorizer(ngram_range = (1,1))
 
 #Transforma
 vec_text = tfv.fit_transform(clean_desc)
@@ -278,7 +261,7 @@ words = tfv.get_feature_names()
 
 
 #Configuração kmeans clustering
-kmeans = KMeans(n_clusters = 2, n_init = 1, max_iter=100)
+kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100)
 
 
 #Ajuste dos dados
@@ -290,27 +273,82 @@ common_words[:,-1:-11:-1]
 #Este loop transforma os números de volta em palavras
 common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
 for num, centroid in enumerate(common_words):
-    str(num) + ' : ' + ', '.join(words[word] for word in centroid)
+    print(str(num) + ' : ' + ', '.join(words[word] for word in centroid))
 
-ratings = dataset['sent_rating'].unique()
+ratings = positive_reviews_df['sent_rating'].unique()
 
 
 #adicione o rótulo cluster ao dataset
-dataset['cluster'] = kmeans.labels_
+positive_reviews_df['cluster'] = kmeans.labels_
 
-clusters = dataset.groupby(['cluster', 'sent_rating']).size()
+clusters = positive_reviews_df.groupby(['cluster', 'sent_rating']).size()
 fig, ax1 = plt.subplots(figsize = (26, 15))
 ax1 = sns.heatmap(clusters.unstack(level = 'sent_rating'), ax = ax1, cmap = 'Reds')
 ax1.set_xlabel('Avaliação').set_size(18)
 ax1.set_ylabel('Cluster').set_size(18)
 st.pyplot(fig)
 
-clusters = dataset.groupby(['cluster', 'above_avg']).size()
-fig2, ax2 = plt.subplots(figsize = (30, 15))
-ax2 = sns.heatmap(clusters.unstack(level = 'above_avg'), ax = ax2, cmap="Reds")
-ax2.set_xlabel('Classificação acima da média').set_size(18)
-ax2.set_ylabel('Cluster').set_size(18)
-st.pyplot(fig2)
+
+fig, ax = plt.subplots(figsize = (14, 4))
+ax = sns.countplot(x='cluster', data=positive_reviews_df).set_title("Contagens de classificação")
+st.pyplot(fig)
+
+###############################################################################################################################
+#Cluster de reviews negativas
+negative_reviews_df = dataset[dataset['sent_rating']=='negativo']
+negative_reviews_df = negative_reviews_df.reset_index(drop=True)
+
+
+#constroi uma nova lista para armazenar o texto
+clean_desc = []
+for w in range(len(negative_reviews_df.processed_text_NoStopwords)):
+    desc = negative_reviews_df['processed_text_NoStopwords'][w].lower()
+    split_text = desc.split()
+
+    split_text = " ".join(split_text)
+    clean_desc.append(split_text)
+
+#TF-IDF vectorizer
+tfv = TfidfVectorizer(ngram_range = (1,1))
+
+#Transforma
+vec_text = tfv.fit_transform(clean_desc)
+
+words = tfv.get_feature_names()
+
+
+#Configuração kmeans clustering
+kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100)
+
+
+#Ajuste dos dados
+kmeans.fit(vec_text)
+
+common_words = kmeans.cluster_centers_.argsort()#[:,-1:-10:-1]
+common_words[:,-1:-11:-1]
+
+#Este loop transforma os números de volta em palavras
+common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
+for num, centroid in enumerate(common_words):
+    print(str(num) + ' : ' + ', '.join(words[word] for word in centroid))
+
+ratings = negative_reviews_df['sent_rating'].unique()
+
+
+#adicione o rótulo cluster ao dataset
+negative_reviews_df['cluster'] = kmeans.labels_
+
+clusters = negative_reviews_df.groupby(['cluster', 'sent_rating']).size()
+fig, ax1 = plt.subplots(figsize = (26, 15))
+ax1 = sns.heatmap(clusters.unstack(level = 'sent_rating'), ax = ax1, cmap = 'Reds')
+ax1.set_xlabel('Avaliação').set_size(18)
+ax1.set_ylabel('Cluster').set_size(18)
+st.pyplot(fig)
+
+
+fig, ax = plt.subplots(figsize = (14, 4))
+ax = sns.countplot(x='cluster', data=negative_reviews_df).set_title("Contagens de classificação")
+st.pyplot(fig)
 
 
 fig, ax = plt.subplots(figsize = (14, 4))
