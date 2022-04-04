@@ -40,7 +40,7 @@ summarised_results = dataset["sent_rating"].value_counts()
 qtd_star = ('Positiva', 'Negativa')
 valores = summarised_results.values
 fig, ax = plt.subplots(figsize=(5, 5))
-ax = sns.barplot(x= qtd_star , y= valores, data=summarised_results)
+ax = sns.barplot(x= qtd_star , y= summarised_results.values)
 st.pyplot(fig)
 
 
