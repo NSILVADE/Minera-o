@@ -151,7 +151,7 @@ plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.write("Os meses com maiores volumes de avaliações são os meses de Julho e Dezembro, tendo Dezembro o pico de maior, onde deve-se levar em consideração que neste período do ano as vendas aumentam, podendo ser um fator predominante para a quantidade de avaliações ")
+st.write("Os meses com maiores volumes de avaliações são os meses de Julho e Dezembro, tendo Dezembro o pico maior, onde deve-se levar em consideração que neste período do ano as vendas aumentam, podendo ser um fator predominante para a quantidade de avaliações ")
 
 
 #Dia
