@@ -42,7 +42,7 @@ summarised_results = dataset["sent_rating"].value_counts()
 qtd_star = ('Positiva', 'Negativa')
 valores = summarised_results.values
 fig, ax = plt.subplots(figsize=(5, 5))
-ax = sns.histplot(x= qtd_star, y = valores , stat="probability")
+ax = sns.histplot(x= qtd_star, y = summarised_results , stat="probability")
 st.pyplot(fig)
 
 ##################################################################################################################################
