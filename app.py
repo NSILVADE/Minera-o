@@ -275,7 +275,7 @@ common_words[:,-1:-11:-1]
 #Este loop transforma os números de volta em palavras
 common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
 for num, centroid in enumerate(common_words):
-    print(str(num) + ' : ' + ', '.join(words[word] for word in centroid))
+    str(num) + ' : ' + ', '.join(words[word] for word in centroid)
 
 ratings = positive_reviews_df['sent_rating'].unique()
 
@@ -332,7 +332,7 @@ common_words[:,-1:-11:-1]
 #Este loop transforma os números de volta em palavras
 common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
 for num, centroid in enumerate(common_words):
-    print(str(num) + ' : ' + ', '.join(words[word] for word in centroid))
+   str(num) + ' : ' + ', '.join(words[word] for word in centroid)
 
 ratings = negative_reviews_df['sent_rating'].unique()
 
