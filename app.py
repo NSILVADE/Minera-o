@@ -24,7 +24,6 @@ from nltk.stem.wordnet import WordNetLemmatizer
 nltk.download('stopwords')
 nltk.download('wordnet')
 from statsmodels.tsa.stattools import adfuller
-random_seed=42
 
 st.title("Analise de Avaliaçãoes")
 
@@ -278,7 +277,7 @@ words = tfv.get_feature_names()
 
 
 #Configuração kmeans clustering
-kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100)
+kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100, random_seed=42)
 
 
 #Ajuste dos dados
@@ -336,7 +335,7 @@ words = tfv.get_feature_names()
 
 
 #Configuração kmeans clustering
-kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100)
+kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100, random_seed=42)
 
 
 #Ajuste dos dados
