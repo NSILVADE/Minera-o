@@ -247,6 +247,7 @@ fig.append_trace(trace1, 2, 1)
 
 fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', title="Trigrama Plots")
 
+st.write("As verificações mediante a separação por Bigrams(duas palavras), observamos que assim como nos WordCloud's temos repetições de sentimentos das avaliações, contudo as avaliações positivas, são predominantementes sobre algumas especificações do produto, em contrapartida das avaliações negativas, onde a geração do produto é citada com maior frequênicia do que as suas especificações")
 
 ##################################################################################################################################
 #Cluster de reviews postivas
