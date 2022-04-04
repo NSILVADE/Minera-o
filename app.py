@@ -242,14 +242,18 @@ fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', t
 #adiciona coluna 
 dataset['above_avg'] = [1 if rating == 'positivo' else 0 for rating in dataset['sent_rating']]
 
+#Filtrando as avaliações
+dataset['review_pos'] = dataset[dataset['sent_rating'] == 'positivo'].dropna()
+dataset['review_neg'] = dataset[dataset['sent_rating'] == 'negativo'].dropna()
+
 #Criando a lista das stopwords
 stop_words = set(stopwords.words("portuguese"))
 
 #constroi uma nova lista para armazenar o texto limpo
 clean_desc = []
-for w in range(len(dataset.processed_text_NoStopwords)):
-    dataset.processed_text_NoStopwords = dataset.processed_text_NoStopwords.astype(str)
-    desc = dataset['processed_text_NoStopwords'][w].lower()
+for w in range(len(dataset.review_pos)):
+    dataset.review_pos = dataset.review_pos.astype(str)
+    desc = dataset['review_pos'][w].lower()
     
     #remove pontuação
     desc = re.sub('[^a-zA-Z]', ' ', desc)
@@ -287,7 +291,7 @@ kmeans.fit(vec_text)
 common_words = kmeans.cluster_centers_.argsort()#[:,-1:-10:-1]
 common_words[:,-1:-11:-1]
 
-#este loop transforma os números de volta em palavras
+#Este loop transforma os números de volta em palavras
 common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
 for num, centroid in enumerate(common_words):
     str(num) + ' : ' + ', '.join(words[word] for word in centroid)
