@@ -250,8 +250,8 @@ fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', t
 st.write("As verificações mediante a separação por Bigrams(duas palavras), observamos que assim como nos WordCloud's temos repetições de sentimentos das avaliações, contudo as avaliações positivas, são predominantementes sobre algumas especificações do produto, em contrapartida das avaliações negativas, onde a geração do produto é citada com maior frequênicia do que as suas especificações")
 
 ##################################################################################################################################
-st.header("Clusterização das Avaliações")
-st.title("Cluster das Avaliações Postivas")
+st.title("Clusterização das Avaliações")
+st.header("Cluster das Avaliações Postivas")
 
 #Cluster de reviews postivas
 positive_reviews_df = dataset[dataset['sent_rating']=='positivo']
@@ -308,9 +308,9 @@ st.pyplot(fig)
 fig, ax = plt.subplots(figsize = (14, 4))
 ax = sns.countplot(x='cluster', data=positive_reviews_df).set_title("Contagens de classificação - Reviews Positivos")
 st.pyplot(fig)
-
+st.write("As principais clusterizações de avaliações positivas do produto estão concentradas no Cluster 1, tendo como principais palavras: som, recomendo e ótimo")
 ###############################################################################################################################
-st.title("Cluster das Avaliações Negativas")
+st.header("Cluster das Avaliações Negativas")
 #Cluster de reviews negativas
 negative_reviews_df = dataset[dataset['sent_rating']=='negativo']
 negative_reviews_df = negative_reviews_df.reset_index(drop=True)
@@ -366,7 +366,7 @@ st.pyplot(fig)
 fig, ax = plt.subplots(figsize = (14, 4))
 ax = sns.countplot(x='cluster', data=negative_reviews_df).set_title("Contagens de classificação - Reviews Negativos")
 st.pyplot(fig)
-
+st.write("As principais clusterizações de avaliações negativas do produto estão concentradas no Cluster 1 e 0, tendo como principais palavras: som, geração e reconhecimento")
 
 
 
