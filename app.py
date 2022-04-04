@@ -252,8 +252,8 @@ stop_words = set(stopwords.words("portuguese"))
 
 #constroi uma nova lista para armazenar o texto limpo
 clean_desc = []
-for w in range(len(review_pos.processed_text_NoStopwords)):
-    review_pos.processed_text_NoStopwords = review_pos.processed_text_NoStopwords.astype(str)
+for w in range(len(dataset.processed_text_NoStopwords)):
+    dataset.processed_text_NoStopwords = dataset.processed_text_NoStopwords.astype(str)
     desc = review_pos['processed_text_NoStopwords'][w].lower()
     
     #remove pontuação
