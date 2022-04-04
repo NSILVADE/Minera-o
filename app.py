@@ -27,7 +27,7 @@ from PIL import Image
 
 st.title("Analise de Avaliaçãoes")
 st.write("Echo Dot - 4 Geração - Amazon")
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([3, 2, 1])
 
 with col1:
     st.title("")
