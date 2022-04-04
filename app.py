@@ -28,7 +28,7 @@ from statsmodels.tsa.stattools import adfuller
 st.title("Analise de Avaliaçãoes")
 st.write("Echo Dot - 4 Geração - Amazon")
 
-col1, col2, col3 = st.columns([3, 1, 2])
+col1, col2, col3 = st.columns(3)
 
 with col1:
     st.title("")
