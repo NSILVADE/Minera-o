@@ -45,6 +45,7 @@ plt.ylabel("Quantidade de Avaliação")
 plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
+st.write("Quantidades de classificação do sentimento de acordo com a avalição do produto")
 
 
 ##################################################################################################################################
