@@ -23,7 +23,8 @@ from sklearn.cluster import KMeans
 from nltk.stem.wordnet import WordNetLemmatizer
 nltk.download('stopwords')
 nltk.download('wordnet')
-from PIL import Image
+from statsmodels.tsa.stattools import adfuller
+import columns
 
 st.title("Analise de Avaliaçãoes")
 st.write("Echo Dot - 4 Geração - Amazon")
