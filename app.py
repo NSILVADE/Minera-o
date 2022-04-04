@@ -352,11 +352,6 @@ fig, ax = plt.subplots(figsize = (14, 4))
 ax = sns.countplot(x='cluster', data=negative_reviews_df).set_title("Contagens de classificação")
 st.pyplot(fig)
 
-
-fig, ax = plt.subplots(figsize = (14, 4))
-ax = sns.countplot(x='cluster', data=dataset).set_title("Contagens de classificação")
-st.pyplot(fig)
-
 #cria dataframe de reviews positivos
 above_avg = dataset.loc[dataset['above_avg'] == 1]
 #cria dataframe de reviews negativos
