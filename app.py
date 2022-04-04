@@ -24,6 +24,7 @@ from nltk.stem.wordnet import WordNetLemmatizer
 nltk.download('stopwords')
 nltk.download('wordnet')
 from statsmodels.tsa.stattools import adfuller
+random_seed=42
 
 st.title("Analise de Avaliaçãoes")
 
