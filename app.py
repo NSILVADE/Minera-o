@@ -36,7 +36,9 @@ dataset = pd.read_csv('NoStem_TotalStopwordRemoval_dataset.csv')
 dataset = dataset.dropna()
 dataset = dataset.reset_index(drop=True)
     
-st.write('Plot dos Dados')
+st.header('Plot dos Dados')
+st.pyplot()
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 summarised_results = dataset["sent_rating"].value_counts()
 qtd_star = ('Positiva', 'Negativa')
