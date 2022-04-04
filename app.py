@@ -28,7 +28,7 @@ from statsmodels.tsa.stattools import adfuller
 st.title("Analise de Avaliaçãoes")
 st.write("Echo Dot - 4 Geração - Amazon")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns([3, 1, 2])
 
 with col1:
     st.title("")
@@ -39,6 +39,7 @@ with col2:
 
 with col3:
     st.write("")
+
 
 dataset = pd.read_csv('NoStem_TotalStopwordRemoval_dataset.csv')
 dataset = dataset.dropna()
