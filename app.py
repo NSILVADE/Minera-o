@@ -278,7 +278,7 @@ words = tfv.get_feature_names()
 
 
 #Configuração kmeans clustering
-kmeans = KMeans(n_clusters = 21, n_init = 1, max_iter=1000)
+kmeans = KMeans(n_clusters = 2, n_init = 1, max_iter=100)
 
 
 #Ajuste dos dados
