@@ -242,8 +242,8 @@ fig['layout'].update(height=1000, width=800, paper_bgcolor='rgb(233,233,233)', t
 #adiciona coluna 
 dataset['above_avg'] = [1 if rating == 'positivo' else 0 for rating in dataset['sent_rating']]
 
-dataset['Reviews_Pos'] = dataset[dataset.sent_rating == 'positivo']
-dataset['Reviews_Neg'] = dataset[dataset.sent_rating == 'positivo']
+review_pos = dataset[dataset['sent_rating'] == 'positivo'].dropna()
+review_neg = dataset[dataset['sent_rating'] == 'negativo'].dropna()
 
 #processed_text_NoStopwords
 
@@ -252,9 +252,9 @@ stop_words = set(stopwords.words("portuguese"))
 
 #constroi uma nova lista para armazenar o texto limpo
 clean_desc = []
-for w in range(len(dataset.Reviews_Pos)):
-    dataset.Reviews_Pos = dataset.Reviews_Pos.astype(str)
-    desc = dataset['Reviews_Pos'][w].lower()
+for w in range(len(review_pos.processed_text_NoStopwords)):
+    review_pos.processed_text_NoStopwords = review_pos.processed_text_NoStopwords.astype(str)
+    desc = review_pos['processed_text_NoStopwords'][w].lower()
     
     #remove pontuação
     desc = re.sub('[^a-zA-Z]', ' ', desc)
