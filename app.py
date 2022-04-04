@@ -40,7 +40,7 @@ st.write('Plot dos Dados')
 
 st.header('Tipo de Avaliação')
 summarised_results = dataset["sent_rating"].value_counts()
-qtd_star = ('Positiva', 'Negativa')
+qtd_star = dataset["sent_rating"]
 fig, ax = plt.subplots(figsize=(5, 5))
 ax = sns.histplot(x= qtd_star, y = summarised_results.values, stat="probability")
 st.pyplot(fig)
