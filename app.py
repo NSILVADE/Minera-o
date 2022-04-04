@@ -40,7 +40,7 @@ summarised_results = dataset["sent_rating"].value_counts()
 qtd_star = ('Positiva', 'Negativa')
 valores = summarised_results.values
 fig, ax = plt.subplots(figsize=(5, 5))
-ax = sns.histplot(data= summarised_results, x= qtd_star)
+ax = sns.barplot(x= qtd_star , y= valores, data=summarised_results, palette=colors)
 st.pyplot(fig)
 
 
