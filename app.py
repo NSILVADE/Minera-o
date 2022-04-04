@@ -140,6 +140,7 @@ plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
+st.write("Os gráficos das avalições por sentimento por Ano e Mês, possuem um ciclo de ocorrência similares, onde podemos observar uma maior dissemelhança nas quantidades de avaliações positivas, possuindo maior valor")
 
 Meses = dataset.groupby(['Mês'])['Count'].count().reset_index()
 Meses['Mês'] = Meses['Mês'].apply(lambda x: calendar.month_name[x])
@@ -149,6 +150,8 @@ Meses.plot(x="Mês",y="Count",kind="bar",title="Número de Avaliações Por Mês
 plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
+
 
 #Dia
 #dia = dataset.groupby('Dia')['processed_text_NoStopwords'].count().reset_index()
