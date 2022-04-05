@@ -35,6 +35,7 @@ dataset = dataset.dropna()
 dataset = dataset.reset_index(drop=True)
     
 st.header('Plot dos Dados')
+
 summarised_results = dataset["sent_rating"].value_counts()
 qtd_star = ('Positiva', 'Negativa')
 plt.bar(qtd_star, summarised_results.values)
