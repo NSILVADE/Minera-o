@@ -282,7 +282,7 @@ kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100, random_state=42)
 kmeans.fit(vec_text)
 
 common_words = kmeans.cluster_centers_.argsort()#[:,-1:-10:-1]
-common_words[:,-1:-11:-1]
+#common_words[:,-1:-11:-1]
 
 #Este loop transforma os números de volta em palavras
 common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
@@ -295,12 +295,12 @@ ratings = positive_reviews_df['sent_rating'].unique()
 #adicione o rótulo cluster ao dataset
 positive_reviews_df['cluster'] = kmeans.labels_
 
-clusters = positive_reviews_df.groupby(['cluster', 'sent_rating']).size()
-fig, ax1 = plt.subplots(figsize = (26, 15))
-ax1 = sns.heatmap(clusters.unstack(level = 'sent_rating'), ax = ax1, cmap = 'Reds')
-ax1.set_xlabel('Avaliação').set_size(18)
-ax1.set_ylabel('Cluster').set_size(18)
-st.pyplot(fig)
+#clusters = positive_reviews_df.groupby(['cluster', 'sent_rating']).size()
+#fig, ax1 = plt.subplots(figsize = (26, 15))
+#ax1 = sns.heatmap(clusters.unstack(level = 'sent_rating'), ax = ax1, cmap = 'Reds')
+#ax1.set_xlabel('Avaliação').set_size(18)
+#ax1.set_ylabel('Cluster').set_size(18)
+#st.pyplot(fig)
 
 
 fig, ax = plt.subplots(figsize = (14, 4))
@@ -340,7 +340,7 @@ kmeans = KMeans(n_clusters = 3, n_init = 1, max_iter=100, random_state=42)
 kmeans.fit(vec_text)
 
 common_words = kmeans.cluster_centers_.argsort()#[:,-1:-10:-1]
-common_words[:,-1:-11:-1]
+#common_words[:,-1:-11:-1]
 
 #Este loop transforma os números de volta em palavras
 common_words = kmeans.cluster_centers_.argsort()[:,-1:-11:-1]
@@ -353,12 +353,12 @@ ratings = negative_reviews_df['sent_rating'].unique()
 #adicione o rótulo cluster ao dataset
 negative_reviews_df['cluster'] = kmeans.labels_
 
-clusters = negative_reviews_df.groupby(['cluster', 'sent_rating']).size()
-fig, ax1 = plt.subplots(figsize = (26, 15))
-ax1 = sns.heatmap(clusters.unstack(level = 'sent_rating'), ax = ax1, cmap = 'Reds')
-ax1.set_xlabel('Avaliação').set_size(18)
-ax1.set_ylabel('Cluster').set_size(18)
-st.pyplot(fig)
+#clusters = negative_reviews_df.groupby(['cluster', 'sent_rating']).size()
+#fig, ax1 = plt.subplots(figsize = (26, 15))
+#ax1 = sns.heatmap(clusters.unstack(level = 'sent_rating'), ax = ax1, cmap = 'Reds')
+#ax1.set_xlabel('Avaliação').set_size(18)
+#ax1.set_ylabel('Cluster').set_size(18)
+#st.pyplot(fig)
 
 
 fig, ax = plt.subplots(figsize = (14, 4))
