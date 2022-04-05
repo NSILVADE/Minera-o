@@ -44,8 +44,6 @@ plt.show()
 st.pyplot()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.write("No gráfico acima temos as quantidades de classificação do sentimento de acordo com a avalição do produto")
-
-
 ##################################################################################################################################
 
 #WordClouds
